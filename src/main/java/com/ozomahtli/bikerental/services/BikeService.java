@@ -40,7 +40,13 @@ public class BikeService implements BikeOperations {
     public Collection<BikeDto> getBikes() {
         List<BikeDto> list = new ArrayList<>();
         BikeDto bike1 = BikeDto.builder()
+                .id("1")
+                .brand("Specialized")
+                .model("Stumpjumper")
+                .state("Active")
+                .image("none")
                 .build();
-        return List.of();
+        list.add(bike1);
+        return list;
     }
 }

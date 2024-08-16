@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Collection;
+import java.util.List;
+
 @RestController
 public class ProductServiceController {
     @Autowired
@@ -14,6 +17,7 @@ public class ProductServiceController {
 
     @GetMapping("/api/bikes")
     public ResponseEntity<Object> getBikes(){
-        return new ResponseEntity<>("ahi te va", HttpStatus.OK);
+        Collection bikes = service.getBikes();
+        return new ResponseEntity<>(bikes, HttpStatus.OK);
     }
 }

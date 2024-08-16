@@ -1,5 +1,7 @@
 package com.ozomahtli.bikerental.business;
 
+import com.ozomahtli.bikerental.dto.BikeDto;
+
 import java.util.Collection;
 
 public interface BikeOperations {
@@ -8,5 +10,5 @@ public interface BikeOperations {
     void updateBike();
     void deleteBike(int id);
     void replaceBike();
-    Collection<Object> getBikes();
+    Collection<BikeDto> getBikes();
 }
