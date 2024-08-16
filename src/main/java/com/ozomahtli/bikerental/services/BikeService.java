@@ -1,8 +1,10 @@
 package com.ozomahtli.bikerental.services;
 
 import com.ozomahtli.bikerental.business.BikeOperations;
+import com.ozomahtli.bikerental.dto.BikeDto;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -35,7 +37,10 @@ public class BikeService implements BikeOperations {
     }
 
     @Override
-    public Collection<Object> getBikes() {
+    public Collection<BikeDto> getBikes() {
+        List<BikeDto> list = new ArrayList<>();
+        BikeDto bike1 = BikeDto.builder()
+                .build();
         return List.of();
     }
 }
