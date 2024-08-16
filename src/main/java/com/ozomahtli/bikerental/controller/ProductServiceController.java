@@ -1,5 +1,6 @@
 package com.ozomahtli.bikerental.controller;
 
+import com.ozomahtli.bikerental.dto.BikeDto;
 import com.ozomahtli.bikerental.services.BikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,8 +17,8 @@ public class ProductServiceController {
     BikeService service;
 
     @GetMapping("/api/bikes")
-    public ResponseEntity<Object> getBikes(){
-        Collection bikes = service.getBikes();
+    public ResponseEntity<Collection<BikeDto>> getBikes(){
+        Collection<BikeDto> bikes = service.getBikes();
         return new ResponseEntity<>(bikes, HttpStatus.OK);
     }
 }
