@@ -12,20 +12,22 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class ApiKeyAuthFilter extends AbstractAuthenticationProcessingFilter {
-    private static final String API_KEY_HEADER = "API_key";
-    private static final String API_SECRET_HEADER = "API_secret";
+    private static final String API_KEY_HEADER = "API-key";
+    private static final String API_SECRET_HEADER = "API-secret";
     //comment
     public ApiKeyAuthFilter(RequestMatcher requiresAuth){
         super(requiresAuth);
     }
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException{
+
         String apiKey = request.getHeader(API_KEY_HEADER);
         String apiSecret = request.getHeader(API_SECRET_HEADER);
 
         if(apiKey == null || apiSecret == null){
             throw new RuntimeException("Missing API Key or Secret");
         }
+
         Authentication auth = new ApiKeyAuthenticationToken(apiKey, apiSecret);
         return getAuthenticationManager().authenticate(auth);
     }
