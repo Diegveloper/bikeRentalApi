@@ -29,6 +29,7 @@ public class ApiKeyAuthFilter extends AbstractAuthenticationProcessingFilter {
         }
 
         Authentication auth = new ApiKeyAuthenticationToken(apiKey, apiSecret);
+
         return getAuthenticationManager().authenticate(auth);
     }
 
