@@ -13,7 +13,7 @@ public class ApiKeyAuthentication extends AbstractAuthenticationToken {
         this.apiKey = apiKey;
         setAuthenticated(true);
     }
-
+    public void test(){}
     @Override
     public Object getCredentials() {
         return null;
