@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public class ApiKeyAuthentication extends AbstractAuthenticationToken {
     private final String apiKey;
-
+    //working
     public ApiKeyAuthentication(String apiKey, Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         this.apiKey = apiKey;
