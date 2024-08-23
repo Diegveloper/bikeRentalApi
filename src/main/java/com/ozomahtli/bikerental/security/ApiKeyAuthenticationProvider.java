@@ -4,19 +4,16 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
-import java.util.Collections;
-
-public class ApiKeyAuthProvider implements AuthenticationProvider {
-
+public class ApiKeyAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String apiKey = (String) authentication.getPrincipal();
+        System.out.println("in the provider");
         return new ApiKeyToken();
     }
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return false;
+        System.out.println("supporting");
+        return ApiKeyToken.class.isAssignableFrom(authentication);
     }
 }
-
