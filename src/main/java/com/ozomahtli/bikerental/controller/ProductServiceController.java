@@ -21,7 +21,7 @@ public class ProductServiceController {
     @GetMapping("/api/bikes")
     public ResponseEntity<Collection<BikeDto>> getBikes(){
         Collection<BikeDto> bikes = service.getBikes();
-        System.out.println("");
+        System.out.println("a");
         return new ResponseEntity<>(bikes, HttpStatus.OK);
     }
 
