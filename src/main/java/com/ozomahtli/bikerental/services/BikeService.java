@@ -2,6 +2,8 @@ package com.ozomahtli.bikerental.services;
 
 import com.ozomahtli.bikerental.business.BikeOperations;
 import com.ozomahtli.bikerental.dto.BikeDto;
+import com.ozomahtli.bikerental.repository.BikeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,8 +13,12 @@ import java.util.List;
 
 @Service
 public class BikeService implements BikeOperations {
+
+    @Autowired
+    private BikeRepository repo;
+
     @Override
-    public void createBike() {
+    public void createBike(BikeDto dto) {
 
     }
 
@@ -39,14 +45,7 @@ public class BikeService implements BikeOperations {
     @Override
     public Collection<BikeDto> getBikes() {
         List<BikeDto> list = new ArrayList<>();
-        BikeDto bike1 = BikeDto.builder()
-                .id("1")
-                .brand("Specialized")
-                .model("Stumpjumper")
-                .state("Active")
-                .image("none")
-                .build();
-        list.add(bike1);
+
         return list;
     }
 }

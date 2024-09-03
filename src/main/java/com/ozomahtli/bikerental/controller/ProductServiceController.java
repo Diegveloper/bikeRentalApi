@@ -5,6 +5,8 @@ import com.ozomahtli.bikerental.services.BikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -20,5 +22,11 @@ public class ProductServiceController {
     public ResponseEntity<Collection<BikeDto>> getBikes(){
         Collection<BikeDto> bikes = service.getBikes();
         return new ResponseEntity<>(bikes, HttpStatus.OK);
+    }
+
+    @PostMapping("/api/bikes")
+    public ResponseEntity<BikeDto> createBike(@RequestBody BikeDto bike){
+        service.createBike(bike);
+        return new ResponseEntity<>(bike, HttpStatus.CREATED);
     }
 }
