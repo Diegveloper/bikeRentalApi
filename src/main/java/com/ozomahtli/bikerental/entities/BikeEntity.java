@@ -23,6 +23,7 @@ public class BikeEntity {
     @SequenceGenerator(name = "bikes_generator", sequenceName="bikes_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bikes_generator")
     private Long id;
+    private String name;
     private String brand;
     private String image;
     private String description;
