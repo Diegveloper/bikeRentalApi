@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 
 
 public class BikeDto {
+    private Long id;
     private String name;
     private String brand;
-    private String model;
     private String image;
     private int units;
-    private String review;
+    private String description;
+    private float review;
 }
