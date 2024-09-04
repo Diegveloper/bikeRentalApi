@@ -32,7 +32,6 @@ public class ProductServiceController {
         if(result.hasErrors()){
             throw new InvalidInput(result);
         }
-
         BikeDto output = service.createBike(bike);
         return new ResponseEntity<>(output, HttpStatus.CREATED);
     }
