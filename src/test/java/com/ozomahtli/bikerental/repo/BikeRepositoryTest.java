@@ -32,7 +32,27 @@ public class BikeRepositoryTest {
         assert savedBike.getId() != null;
         assert savedBike.getName().equals("test bike");
         assert savedBike.getBrand().equals("ozomahtli bikes");
+    }
 
+    @Test
+    public void BikeRepo_GetAll_ReturnAll(){
+        //Arrange
+        BikeEntity bike1 = BikeEntity.builder()
+                .name("test bike 1")
+                .brand("ozomahtli bikes")
+                .build();
+        BikeEntity bike2 = BikeEntity.builder()
+                .name("test bike 2")
+                .brand("ozomahtli bikes")
+                .build();
+        repo.save(bike1);
+        repo.save(bike2);
 
+        //Act
+        Iterable<BikeEntity> allBikes = repo.findAll();
+
+        //Assert
+        Assertions.assertThat(allBikes).hasSize(2);
+        Assertions.assertThat(allBikes).contains(bike1, bike2);
     }
 }
