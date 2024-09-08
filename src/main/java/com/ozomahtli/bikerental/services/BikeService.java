@@ -20,11 +20,8 @@ public class BikeService implements BikeOperations {
     private BikeRepository repo;
 
     @Autowired
-    private BikeMapper mapper;
-    @Autowired
     private BikeMapper bikeMapper;
-    @Autowired
-    private BikeRepository bikeRepository;
+
 
     @Override
     public BikeDto createBike(BikeDto dto) {

@@ -2,19 +2,24 @@ package com.ozomahtli.bikerental.repo;
 
 import com.ozomahtli.bikerental.entities.BikeEntity;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.ozomahtli.bikerental.repository.BikeRepository;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class BikeRepositoryTest {
+
     @Autowired
     private BikeRepository repo;
+
 
     @Test
     public void BikeRepo_SaveBike_ReturnSavedBike(){
@@ -54,5 +59,22 @@ public class BikeRepositoryTest {
         //Assert
         Assertions.assertThat(allBikes).hasSize(2);
         Assertions.assertThat(allBikes).contains(bike1, bike2);
+    }
+
+    @Test
+    public void BikeRepo_FindById_ReturnBika(){
+        //Arrange
+        BikeEntity bike1 = BikeEntity.builder()
+                .name("test bike 1")
+                .brand("ozomahtli bikes")
+                .build();
+
+        repo.save(bike1);
+
+        BikeEntity bike = repo.findById(bike1.getId()).get();
+
+        //Act
+        Assertions.assertThat(bike).isNotNull();
+
     }
 }
