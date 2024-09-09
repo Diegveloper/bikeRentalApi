@@ -52,7 +52,9 @@ public class BikeService implements BikeOperations {
     @Override
     public Collection<BikeDto> getBikes() {
         List<BikeDto> list = new ArrayList<>();
-
+        repo.findAll().forEach(entity -> list.add(bikeMapper.toDto(entity)));
         return list;
     }
+
+
 }
