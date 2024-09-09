@@ -3,6 +3,7 @@ package com.ozomahtli.bikerental.services;
 import com.ozomahtli.bikerental.business.BikeOperations;
 import com.ozomahtli.bikerental.dto.BikeDto;
 import com.ozomahtli.bikerental.entities.BikeEntity;
+import com.ozomahtli.bikerental.exceptions.BikeNotFound;
 import com.ozomahtli.bikerental.mapper.BikeMapper;
 import com.ozomahtli.bikerental.repository.BikeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class BikeService implements BikeOperations {
 
         }
         else{
-            throw new RuntimeException("No pero no");
+            throw new BikeNotFound(id);
         }
     }
 
