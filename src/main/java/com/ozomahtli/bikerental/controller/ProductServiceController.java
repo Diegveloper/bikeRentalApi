@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -34,5 +31,13 @@ public class ProductServiceController {
         }
         BikeDto output = service.createBike(bike);
         return new ResponseEntity<>(output, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/api/bikes/{bikeId}")
+    public ResponseEntity<BikeDto> updateBike(@PathVariable("bikeId") int id,
+                                              @Valid @RequestBody BikeDto bike,
+                                              BindingResult result){
+        BikeDto output = service.replaceBike(id, bike);
+        return new ResponseEntity<>(output, HttpStatus.ACCEPTED);
     }
 }

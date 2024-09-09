@@ -10,6 +10,6 @@ public interface BikeOperations {
     void getBike(int id);
     void updateBike();
     void deleteBike(int id);
-    void replaceBike();
+    BikeDto replaceBike(int id, BikeDto bike);
     Collection<BikeDto> getBikes();
 }

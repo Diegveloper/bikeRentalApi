@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -45,8 +46,23 @@ public class BikeService implements BikeOperations {
     }
 
     @Override
-    public void replaceBike() {
+    public BikeDto replaceBike(int id, BikeDto bike) {
+        BikeEntity entity = bikeMapper.toEntity(bike);
+        Optional<BikeEntity> bikeToUpdate = repo.findById( (long) id);
+        if(bikeToUpdate.isPresent()){
+            BikeEntity e = bikeToUpdate.get();
+            e.setName(bike.getName());
+            e.setBrand(bike.getBrand());
+            e.setImage(bike.getImage());
+            e.setDescription(bike.getDescription());
+            e.setUnits(bike.getUnits());
+            e.setReview(bike.getReview());
+            return bikeMapper.toDto(repo.save(e));
 
+        }
+        else{
+            throw new RuntimeException("No pero no");
+        }
     }
 
     @Override
