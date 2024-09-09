@@ -18,6 +18,12 @@ public class ProductServiceController {
     @Autowired
     BikeService service;
 
+    @GetMapping("/api/bikes/{id}")
+    public ResponseEntity<BikeDto> getBike(@PathVariable("id") int id){
+        BikeDto bike = service.getBike(id);
+        return new ResponseEntity<>(bike, HttpStatus.OK);
+    }
+
     @GetMapping("/api/bikes")
     public ResponseEntity<Collection<BikeDto>> getBikes(){
         Collection<BikeDto> bikes = service.getBikes();
