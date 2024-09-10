@@ -8,7 +8,7 @@ import java.util.Collection;
 public interface BikeOperations {
     BikeDto createBike(BikeDto dto);
     BikeDto getBike(int id);
-    BikeDto updateBike();
+    BikeDto updateBike(BikeDto dto);
     BikeDto deleteBike(int id);
     BikeDto replaceBike(int id, BikeDto bike);
     Collection<BikeDto> getBikes();

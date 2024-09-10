@@ -45,18 +45,26 @@ public class BikeService implements BikeOperations {
     }
 
     @Override
-    public BikeDto updateBike() {
+    public BikeDto updateBike(BikeDto bike) {
         return null;
     }
 
     @Override
     public BikeDto deleteBike(int id) {
-        return null;
+        Optional<BikeEntity> bike = repo.findById((long) id);
+        if(bike.isPresent()){
+            BikeEntity e = bike.get();
+            repo.delete(e);
+            return bikeMapper.toDto(e);
+        }
+        else{
+            throw new BikeNotFound(id);
+        }
     }
 
     @Override
     public BikeDto replaceBike(int id, BikeDto bike) {
-        BikeEntity entity = bikeMapper.toEntity(bike);
+
         Optional<BikeEntity> bikeToUpdate = repo.findById( (long) id);
         if(bikeToUpdate.isPresent()){
             BikeEntity e = bikeToUpdate.get();

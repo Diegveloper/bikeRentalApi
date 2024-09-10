@@ -46,4 +46,16 @@ public class ProductServiceController {
         BikeDto output = service.replaceBike(id, bike);
         return new ResponseEntity<>(output, HttpStatus.ACCEPTED);
     }
+
+    @DeleteMapping("/api/bikes/{id}")
+    public ResponseEntity<BikeDto> deleteBike(@PathVariable("id") int id){
+        BikeDto output = service.deleteBike(id);
+        return new ResponseEntity<>(output, HttpStatus.OK);
+    }
+//    @PatchMapping("/api/bikes/{id}")
+//    public ResponseEntity<BikeDto> patchBike(@PathVariable("id") int id,
+//                                              @Valid @RequestBody BikeDto bike,
+//                                              BindingResult result){
+//
+//    }
 }
