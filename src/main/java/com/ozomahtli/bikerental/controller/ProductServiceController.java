@@ -21,6 +21,7 @@ public class ProductServiceController {
     @GetMapping("/api/bikes/{id}")
     public ResponseEntity<BikeDto> getBike(@PathVariable("id") int id){
         BikeDto bike = service.getBike(id);
+
         return new ResponseEntity<>(bike, HttpStatus.OK);
     }
 
