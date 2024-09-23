@@ -1,5 +1,6 @@
 package com.ozomahtli.bikerental.services;
 
+
 import com.ozomahtli.bikerental.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,4 +15,10 @@ public class AuthService {
         return jwt.generateToken("diegolin");
     }
 
+    public Boolean isAuthenticated(String username, String pwd){
+        return username.equals("diegolin") && pwd.equals("1234");
+    }
 }
+
+
+

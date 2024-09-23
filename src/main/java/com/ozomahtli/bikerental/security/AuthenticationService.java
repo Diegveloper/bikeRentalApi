@@ -20,4 +20,13 @@ public class AuthenticationService {
 
         return new ApiKeyToken();
     }
+
+    public static Authentication validateJwt(HttpServletRequest request){
+        String token = request.getHeader("Authorization");
+        System.out.println("Mira el token: " + token );
+        if(token == null){
+            throw new BadCredentialsException("Missing token");
+        }
+        return new JwToken();
+    }
 }
